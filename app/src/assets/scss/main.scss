@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$main_color: #ff00ff;
+$text_size: 50px;
+
+body {
+  color: $main_color;
+  font-size: $text_size;
+}
