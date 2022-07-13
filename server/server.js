@@ -1,29 +1,15 @@
 const express = require("express");
-const path = require("path");
+// const path = require("path");
 const cors = require("cors");
+// const cookieparser = require('cookie-parser')
 require('dotenv').config()
 
 const app = express();
+app.use(express.json())
 app.use(cors());
+// app.use(cookieparser())
 
-app.get('/api', (req, res) => {
-    res.send([
-        {
-            id: 1,
-            title: 'test'
-        },
-        {
-            id: 2,
-            title: 'test 2'
-        }
-    ])
-})
-
-app.get('/', (req, res) => {
-    res.send('Server working!')
-})
-
-const db = require("./settings/db");
+const db = require("./config/db");
 db.mongoose
     .connect(db.url, {
         useNewUrlParser: true,
@@ -41,7 +27,7 @@ db.mongoose
 
 
 
-
+app.use('', require('./routes'))
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

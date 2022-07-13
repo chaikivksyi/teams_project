@@ -8,6 +8,11 @@ $main_color: #ff00ff;
 $text_size: 50px;
 
 body {
-  color: $main_color;
-  font-size: $text_size;
+  //color: $main_color;
+  //font-size: $text_size;
+}
+
+nav a {
+  margin: 0 10px;
+  color: #000;
 }
