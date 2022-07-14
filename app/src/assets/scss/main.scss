@@ -4,10 +4,23 @@
   box-sizing: border-box;
 }
 
-$main_color: #ff00ff;
-$text_size: 50px;
+$main_color: #111111;
+$text_size: 10px;
+$border: 1px solid $main_color;
 
 body {
   color: $main_color;
   font-size: $text_size;
+}
+
+header {
+  padding: 10px 20px;
+  border-bottom: $border;
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    color: $main_color;
+    margin: 0 20px;
+  }
 }
