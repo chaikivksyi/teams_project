@@ -13,21 +13,19 @@ import Header from "./components/Header";
 
 export default function App() {
     return (
-        <div>
-            <Routes>
-                <Route element={<LoginLayout />}>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                </Route>
+        <Routes>
+            <Route element={<LoginLayout />}>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+            </Route>
 
-                <Route path="/" element={<ProtectedLayout />}>
-                    <Route path="/" element={<Home />} />
-                    <Route path="profile" element={<Profile />} />
-                    <Route path="settings" element={<Settings />} />
-                </Route>
+            <Route path="/" element={<ProtectedLayout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="settings" element={<Settings />} />
+            </Route>
 
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </div>
+            <Route path="*" element={<NotFound />} />
+        </Routes>
     );
 }

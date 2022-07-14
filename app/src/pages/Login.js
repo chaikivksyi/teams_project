@@ -1,6 +1,7 @@
 import {useState} from "react";
 import axios from "axios";
 import { useAuth } from "../hooks/useAuth";
+import {Link} from 'react-router-dom'
 
 export default function () {
 
@@ -20,31 +21,22 @@ export default function () {
         })
     }
 
-    function checkAuth(e) {
-        e.preventDefault()
-        const token = localStorage.getItem('user')
-        axios.get('http://localhost:5005/protected', {
-            headers: {
-                Authorization: token
-            }
-        }).then(res => {
-            console.log(res)
-        })
-    }
-
     return (
-        <div>
-            <div>Login</div>
-            <form action="">
-                <div>
-                    <input type="text" value={user.username} onInput={(e) => {setUser({...user, username: e.target.value})}}/>
-                </div>
-                <div>
-                    <input type="password" value={user.password} onInput={(e) => {setUser({...user, password: e.target.value})}}/>
-                </div>
-                <button onClick={onLogin}>Login</button>
-                <button onClick={checkAuth}>checkAuth</button>
-            </form>
-        </div>
+        <form action="">
+            <span className="form-title">Login</span>
+            <div className="form-field">
+                <label htmlFor="username">Username:</label>
+                <input type="text"
+                       value={user.username}
+                       id="username"
+                       onInput={(e) => {setUser({...user, username: e.target.value})}}/>
+            </div>
+            <div className="form-field">
+                <label htmlFor="password">Password:</label>
+                <input type="password" value={user.password} id="password" onInput={(e) => {setUser({...user, password: e.target.value})}}/>
+            </div>
+            <button onClick={onLogin}>Login</button>
+            <Link to="/register">Registration</Link>
+        </form>
     )
 }
