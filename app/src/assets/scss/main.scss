@@ -28,6 +28,10 @@ a {
   text-decoration: none;
 }
 
+ul {
+  list-style: none;
+}
+
 header {
   padding: 10px 20px;
   border-bottom: $border;
@@ -37,6 +41,42 @@ header {
   a {
     color: $main_color;
     margin: 0 20px;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .ava {
+      background: $main_color;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .profile-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      padding: 2px 0;
+      border-radius: $border_radius;
+      background: #bff4d9;
+      min-width: 60px;
+
+      li {
+        text-align: right;
+        cursor: pointer;
+        padding: 3px 5px;
+
+        &:hover {
+          opacity: .9;
+          background: #c7ccc8;
+        }
+      }
+    }
   }
 }
 
