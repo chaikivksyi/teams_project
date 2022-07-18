@@ -126,14 +126,57 @@ const authCtrl = {
 
             if(!user) return res.status(400).json({msg: 'User does not exists'})
 
-            res.json({
-                user: {...user._doc}
-            })
+            res.json({...user._doc})
 
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
-    }
+    },
+    getAllUser: async (req, res)=> {
+        try {
+            const users = await Users.find()
+
+            if(!users) return res.status(400).json({msg: 'Users does not exists'})
+            res.json(users)
+
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    addFriend: async (req,res)=>{
+        try {
+            const {user_id, friend_id} = req.body;
+
+            const user = await Users.findOne({_id: friend_id})
+
+            if(!user) return res.status(400).json({msg: 'User does not exists'})
+
+            const aa =  await Users.updateOne({_id: user_id}, {
+                $addToSet: { "friends" : friend_id }
+            })
+            res.json(aa)
+
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    removeFriend: async (req,res)=>{
+        try {
+            const {user_id, friend_id} = req.body;
+
+            const user = await Users.findOne({_id: friend_id})
+
+            if(!user) return res.status(400).json({msg: 'User does not exists'})
+
+            const aa =  await Users.updateOne({_id: user_id}, {
+                $pull: { "friends" : friend_id }
+            })
+            res.json(aa)
+
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
 }
 
 
